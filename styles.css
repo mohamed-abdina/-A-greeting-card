@@ -47,13 +47,10 @@ body {
 }
 
 .card {
-  position: relative;
+  background-color: white;
   max-width: 400px;
   padding: 40px;
   margin: 0 auto;
-  background-color: white;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
 }
 
 .card.opened {
