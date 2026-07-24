@@ -204,6 +204,29 @@ body {
   background-color: orangered;
 }
 
+/* ---- Download button ---- */
+.download-btn {
+  margin: 20px auto;
+  padding: 12px 28px;
+  font-size: 1.1em;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.download-btn:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+}
+
+.download-btn:active {
+  transform: scale(0.95);
+}
+
 /* ---- Cake ---- */
 .cake {
   margin: 20px 0;

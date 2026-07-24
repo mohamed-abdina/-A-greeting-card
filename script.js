@@ -7,6 +7,7 @@ const starsContainer = document.getElementById('stars');
 const nameInput = document.getElementById('nameInput');
 const updateNameBtn = document.getElementById('updateNameBtn');
 const recipientName = document.getElementById('recipientName');
+const downloadBtn = document.getElementById('downloadBtn');
 
 // Open card on click
 cardWrapper.addEventListener('click', (e) => {
@@ -86,6 +87,26 @@ function createStars() {
     starsContainer.appendChild(star);
   }
 }
+
+// Download card as image
+downloadBtn.addEventListener('click', async () => {
+  const cardInside = document.querySelector('.card-inside');
+  try {
+    downloadBtn.textContent = 'Generating image...';
+    downloadBtn.disabled = true;
+    const canvas = await html2canvas(cardInside, { useCORS: true, scale: 2 });
+    const link = document.createElement('a');
+    link.download = 'greeting-card.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch (err) {
+    console.error('Download failed:', err);
+    alert('Failed to download. Please try again.');
+  } finally {
+    downloadBtn.innerHTML = '&#128190; Download Card as Image';
+    downloadBtn.disabled = false;
+  }
+});
 
 createStars();
 createSparkles();
