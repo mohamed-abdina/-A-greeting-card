@@ -5,45 +5,10 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: brown;
   font-family: Arial, sans-serif;
   padding: 40px;
   text-align: center;
-  overflow: hidden;
-}
-
-/* ---- Confetti ---- */
-.confetti-container {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-}
-
-.confetti-piece {
-  position: absolute;
-  width: 10px;
-  height: 14px;
-  border-radius: 2px;
-  opacity: 0;
-  animation: confettiFall 3s ease-in forwards;
-}
-
-@keyframes confettiFall {
-  0%   { opacity: 1; transform: translateY(-20px) rotate(0deg); }
-  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
-}
-
-/* ---- Card wrapper ---- */
-.card-wrapper {
-  perspective: 1200px;
-  width: 340px;
-  height: 480px;
-  cursor: pointer;
+  background-color: brown;
 }
 
 .card {
@@ -152,7 +117,11 @@ body {
 }
 
 .card-inside h1::before {
-  content: "\1F973 ";
+  content: "🥳 ";
+}
+
+.card-inside h1::after {
+  content: " 🥳";
 }
 
 /* ---- Cake ---- */
@@ -227,12 +196,8 @@ body {
 
 /* ---- Message ---- */
 .message {
-  text-align: center;
-  color: #6b4c6e;
   font-size: 1.2em;
-  line-height: 1.6;
   margin-bottom: 20px;
-  animation: fadeSlideIn 1s ease-out 1s both;
 }
 
 .signature {
@@ -285,6 +250,10 @@ body {
   color: white;
   background-color: midnightblue;
   transition: background-color 0.3s ease;
+}
+
+.card-links a:hover {
+  background-color: orangered;
 }
 
 .card-links a:active {
