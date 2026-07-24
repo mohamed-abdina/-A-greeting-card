@@ -272,6 +272,10 @@ section {
   border-radius: 10px;
 }
 
+section:hover {
+  transform: skewX(10deg);
+}
+
 /* ---- Sparkle ---- */
 .sparkle {
   position: absolute;
