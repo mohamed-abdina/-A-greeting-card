@@ -287,6 +287,10 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.card-links a:active {
+  background-color: midnightblue;
+}
+
 /* ---- Sparkle ---- */
 .sparkle {
   position: absolute;
