@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="stars-container" id="stars"></div>
     <div class="confetti-container" id="confetti"></div>
 
     <div class="card-wrapper" id="cardWrapper">
@@ -21,6 +22,7 @@
         <div class="card-inside">
           <div class="sparkle" id="sparkles"></div>
           <h1>Happy Birthday!</h1>
+          <div class="recipient-name" id="recipientName"></div>
           <div class="cake">
             <div class="candle">
               <div class="flame"></div>
@@ -38,6 +40,12 @@
           <a href="#share" class="share-link">Share on Social Media</a>
         </div>
       </div>
+    </div>
+
+    <div class="name-input-section">
+      <label for="nameInput">Enter recipient's name:</label>
+      <input type="text" id="nameInput" placeholder="e.g. Sarah" maxlength="30">
+      <button id="updateNameBtn">Update Card</button>
     </div>
 
     <section id="send">

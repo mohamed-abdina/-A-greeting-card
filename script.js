@@ -3,6 +3,10 @@ const cardWrapper = document.getElementById('cardWrapper');
 const blowBtn = document.getElementById('blowBtn');
 const confettiContainer = document.getElementById('confetti');
 const sparklesContainer = document.getElementById('sparkles');
+const starsContainer = document.getElementById('stars');
+const nameInput = document.getElementById('nameInput');
+const updateNameBtn = document.getElementById('updateNameBtn');
+const recipientName = document.getElementById('recipientName');
 
 // Open card on click
 cardWrapper.addEventListener('click', (e) => {
@@ -21,6 +25,18 @@ blowBtn.addEventListener('click', (e) => {
 
   flame.style.opacity = '0';
   launchConfetti();
+});
+
+// Update recipient name
+updateNameBtn.addEventListener('click', () => {
+  const name = nameInput.value.trim();
+  recipientName.textContent = name ? name : '';
+});
+
+nameInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    updateNameBtn.click();
+  }
 });
 
 // Confetti burst
@@ -55,4 +71,21 @@ function createSparkles() {
   }
 }
 
+// Stars background
+function createStars() {
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--duration', (1.5 + Math.random() * 2) + 's');
+    star.style.animationDelay = Math.random() * 3 + 's';
+    const size = 2 + Math.random() * 4;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    starsContainer.appendChild(star);
+  }
+}
+
+createStars();
 createSparkles();
