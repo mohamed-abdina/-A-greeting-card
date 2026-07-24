@@ -57,6 +57,7 @@ body {
 
 .card:hover {
   background-color: khaki;
+  transform: scale(1.1);
 }
 
 .card.opened {
