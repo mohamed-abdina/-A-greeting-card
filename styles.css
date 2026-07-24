@@ -151,6 +151,10 @@ body {
   text-align: center;
 }
 
+.card-inside h1::before {
+  content: "\1F973 ";
+}
+
 /* ---- Cake ---- */
 .cake {
   margin: 20px 0;
