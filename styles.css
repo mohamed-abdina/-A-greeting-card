@@ -284,6 +284,7 @@ body {
   border-radius: 5px;
   color: white;
   background-color: midnightblue;
+  transition: background-color 0.3s ease;
 }
 
 /* ---- Sparkle ---- */
