@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* ---- Confetti ---- */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confettiFall 3s ease-in forwards;
+}
+
+@keyframes confettiFall {
+  0%   { opacity: 1; transform: translateY(-20px) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+}
+
+/* ---- Card wrapper ---- */
+.card-wrapper {
+  perspective: 1200px;
+  width: 340px;
+  height: 480px;
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card.opened {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-inside {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Front (envelope) ---- */
+.card-front {
+  background: linear-gradient(145deg, #fff5f5, #ffe0e0);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.envelope {
+  position: relative;
+  width: 180px;
+  height: 130px;
+}
+
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  height: 100px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  border-top: 70px solid #ff6b81;
+  z-index: 2;
+}
+
+.envelope-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(135deg, #ffc5d0 0%, #fad0c4 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.tap-hint {
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: #b5536b;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+/* ---- Inside ---- */
+.card-inside {
+  background: linear-gradient(160deg, #fff9f0, #fff0f5);
+  transform: rotateY(180deg);
+  padding: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.card-inside h1 {
+  font-size: 2.2rem;
+  color: #d63384;
+  text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.2);
+  animation: fadeSlideIn 1s ease-out 0.6s both;
+  text-align: center;
+}
+
+/* ---- Cake ---- */
+.cake {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeSlideIn 1s ease-out 0.8s both;
+}
+
+.candle {
+  position: relative;
+  width: 14px;
+  height: 40px;
+  background: linear-gradient(to right, #f9e79f, #f4d03f);
+  border-radius: 3px 3px 0 0;
+  margin-bottom: -4px;
+  z-index: 2;
+}
+
+.flame {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+  background: radial-gradient(ellipse at bottom, #ffd700, #ff6b00);
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  animation: flicker 0.4s ease-in-out infinite alternate;
+  transition: opacity 0.5s;
+}
+
+.cake-top {
+  width: 90px;
+  height: 30px;
+  background: linear-gradient(135deg, #f8b4c8, #f472b6);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+}
+
+.cake-top::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  border-radius: 0 0 50% 50%;
+}
+
+.cake-middle {
+  width: 110px;
+  height: 35px;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  border-radius: 4px;
+}
+
+.cake-bottom {
+  width: 130px;
+  height: 35px;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  border-radius: 0 0 12px 12px;
+}
+
+@keyframes flicker {
+  0%   { transform: translateX(-50%) scale(1) rotate(-2deg); }
+  100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+}
+
+/* ---- Message ---- */
+.message {
+  text-align: center;
+  color: #6b4c6e;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 10px 0;
+  animation: fadeSlideIn 1s ease-out 1s both;
+}
+
+.signature {
+  font-style: italic;
+  color: #d63384;
+  font-size: 1.1rem;
+  margin-top: 8px;
+  animation: fadeSlideIn 1s ease-out 1.2s both;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Blow button ---- */
+.blow-btn {
+  margin-top: 15px;
+  padding: 10px 24px;
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeSlideIn 1s ease-out 1.4s both;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+.blow-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(245, 158, 11, 0.6);
+}
+
+.blow-btn:active {
+  transform: scale(0.95);
+}
+
+/* ---- Sparkle ---- */
+.sparkle {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fbbf24;
+  border-radius: 50%;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50%      { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 420px) {
+  .card-wrapper {
+    width: 290px;
+    height: 420px;
+  }
+
+  .card-inside h1 {
+    font-size: 1.8rem;
+  }
+
+  .message {
+    font-size: 0.95rem;
+  }
+
+  .cake-top  { width: 75px; height: 25px; }
+  .cake-middle { width: 95px; height: 30px; }
+  .cake-bottom { width: 110px; height: 30px; }
+}
+
+@media (max-height: 600px) {
+  .card-wrapper {
+    height: 360px;
+  }
+
+  .cake {
+    margin: 10px 0;
+  }
+}
