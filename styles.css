@@ -256,6 +256,10 @@ body {
   background-color: orangered;
 }
 
+.card-links a:visited {
+  color: crimson;
+}
+
 .card-links a:active {
   background-color: midnightblue;
 }
