@@ -271,6 +271,12 @@ body {
   transform: scale(0.95);
 }
 
+.card-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
 /* ---- Sparkle ---- */
 .sparkle {
   position: absolute;
