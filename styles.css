@@ -51,6 +51,8 @@ body {
   max-width: 400px;
   padding: 40px;
   margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px gray;
 }
 
 .card.opened {
