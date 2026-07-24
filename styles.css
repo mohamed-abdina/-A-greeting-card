@@ -229,9 +229,9 @@ body {
 .message {
   text-align: center;
   color: #6b4c6e;
-  font-size: 1.05rem;
+  font-size: 1.2em;
   line-height: 1.6;
-  margin: 10px 0;
+  margin-bottom: 20px;
   animation: fadeSlideIn 1s ease-out 1s both;
 }
 
