@@ -264,6 +264,14 @@ body {
   background-color: midnightblue;
 }
 
+section {
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 /* ---- Sparkle ---- */
 .sparkle {
   position: absolute;
